@@ -35,7 +35,7 @@ Download and install from [GISInternals](https://www.gisinternals.com/release.ph
 ### Running the Application
 
 1. Clone the repository
-2. Place your GPX file in the project root directory as `track.gpx` or use the sample provided
+2. Place your GPX file in the `assets` directory as `track.gpx` or use the sample provided
 3. Run the application:
 
 ```bash
