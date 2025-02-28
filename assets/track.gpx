@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="GPX Terrain Visualizer Sample"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Sample Mountain Hike</name>
+    <desc>A sample hiking track for testing the GPX Terrain Visualizer</desc>
+    <time>2025-02-28T12:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>Mountain Trail</name>
+    <trkseg>
+      <!-- Starting point (valley) -->
+      <trkpt lat="47.5000" lon="8.5000">
+        <ele>500</ele>
+        <time>2025-02-28T12:00:00Z</time>
+      </trkpt>
+      <!-- Begin ascent -->
+      <trkpt lat="47.5010" lon="8.5015">
+        <ele>525</ele>
+        <time>2025-02-28T12:05:00Z</time>
+      </trkpt>
+      <trkpt lat="47.5020" lon="8.5030">
+        <ele>550</ele>
+        <time>2025-02-28T12:10:00Z</time>
+      </trkpt>
+      <trkpt lat="47.5030" lon="8.5045">
+        <ele>575</ele>
+        <time>2025-02-28T12:15:00Z</time>
+      </trkpt>
+      <trkpt lat="47.5040" lon="8.5060">
+        <ele>600</ele>
+        <time>2025-02-28T12:20:00Z</time>
+      </trkpt>
+      <!-- Steep section -->
+      <trkpt lat="47.5050" lon="8.5075">
+        <ele>650</ele>
+        <time>2025-02-28T12:25:00Z</time>
+      </trkpt>
+      <trkpt lat="47.5060" lon="8.5090">
+        <ele>700</ele>
+        <time>2025-02-28T12:30:00Z</time>
+      </trkpt>
+      <trkpt lat="47.5070" lon="8.5105">
+        <ele>750</ele>
+        <time>2025-02-28T12:35:00Z</time>
+      </trkpt>
+      <!-- Ridge walk -->
+      <trkpt lat="47.5080" lon="8.5120">
+        <ele>800</ele>
+        <time>2025-02-28T12:40:00Z</time>
+      </trkpt>
+      <trkpt lat="47.5090" lon="8.5135">
+        <ele>820</ele>
+        <time>2025-02-28T12:45:00Z</time>
+      </trkpt>
+      <trkpt lat="47.5100" lon="8.5150">
+        <ele>840</ele>
+        <time>2025-02-28T12:50:00Z</time>
+      </trkpt>
+      <!-- Summit -->
+      <trkpt lat="47.5110" lon="8.5165">
+        <ele>875</ele>
+        <time>2025-02-28T12:55:00Z</time>
+      </trkpt>
+      <trkpt lat="47.5120" lon="8.5180">
+        <ele>900</ele>
+        <time>2025-02-28T13:00:00Z</time>
+      </trkpt>
+      <!-- Begin descent -->
+      <trkpt lat="47.5130" lon="8.5195">
+        <ele>875</ele>
+        <time>2025-02-28T13:05:00Z</time>
+      </trkpt>
+      <trkpt lat="47.5140" lon="8.5210">
+        <ele>850</ele>
+        <time>2025-02-28T13:10:00Z</time>
+      </trkpt>
+      <trkpt lat="47.5150" lon="8.5225">
+        <ele>800</ele>
+        <time>2025-02-28T13:15:00Z</time>
+      </trkpt>
+      <!-- Fast descent -->
+      <trkpt lat="47.5160" lon="8.5240">
+        <ele>750</ele>
+        <time>2025-02-28T13:20:00Z</time>
+      </trkpt>
+      <trkpt lat="47.5170" lon="8.5255">
+        <ele>700</ele>
+        <time>2025-02-28T13:25:00Z</time>
+      </trkpt>
+      <trkpt lat="47.5180" lon="8.5270">
+        <ele>650</ele>
+        <time>2025-02-28T13:30:00Z</time>
+      </trkpt>
+      <!-- End of track in valley -->
+      <trkpt lat="47.5190" lon="8.5285">
+        <ele>600</ele>
+        <time>2025-02-28T13:35:00Z</time>
+      </trkpt>
+      <trkpt lat="47.5200" lon="8.5300">
+        <ele>550</ele>
+        <time>2025-02-28T13:40:00Z</time>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>
