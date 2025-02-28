@@ -11,5 +11,5 @@ pub fn setup_skybox(mut commands: Commands) {
 
 // Set sky color
 pub fn set_sky_clear_color(mut clear_color: ResMut<ClearColor>) {
-    *clear_color = ClearColor(Color::rgb(SKY_COLOR[0], SKY_COLOR[1], SKY_COLOR[2]));
+    *clear_color = ClearColor(Color::srgb(SKY_COLOR[0], SKY_COLOR[1], SKY_COLOR[2]));
 }

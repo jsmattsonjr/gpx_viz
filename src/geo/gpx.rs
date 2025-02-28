@@ -108,7 +108,7 @@ pub fn visualize_loaded_gpx(
                 stacks: 8,
             })),
             material: materials
-                .add(Color::rgb(TRACK_COLOR[0], TRACK_COLOR[1], TRACK_COLOR[2]).into()),
+                .add(Color::srgb(TRACK_COLOR[0], TRACK_COLOR[1], TRACK_COLOR[2]).into()),
             transform: Transform::from_translation(position),
             ..default()
         });
