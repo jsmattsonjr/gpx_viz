@@ -33,15 +33,11 @@ impl Default for GpxTrackData {
 pub struct LoadGpx(pub String);
 
 // System to load GPX file
-pub fn load_gpx_file(
-    mut commands: Commands,
-    mut track_data: ResMut<GpxTrackData>,
-    file_path: String,
-) -> anyhow::Result<()> {
+pub fn parse_gpx_file(file_path: &str) -> anyhow::Result<(Vec<GeoPoint>, GeoPoint, String)> {
     info!("Loading GPX file: {}", file_path);
 
     // Open and parse the GPX file
-    let file = File::open(&file_path)?;
+    let file = File::open(file_path)?;
     let reader = BufReader::new(file);
     let gpx: Gpx = read(reader)?;
 
@@ -61,28 +57,25 @@ pub fn load_gpx_file(
         }
     }
 
-    // If we have points, update the track data
+    // If we have points, return the data
     if !points.is_empty() {
         // Use the first point as the origin for local coordinates
         let origin = points[0];
 
-        track_data.points = points;
-        track_data.origin = origin;
-        track_data.name = gpx.metadata.and_then(|m| m.name).unwrap_or_else(|| {
-            Path::new(&file_path)
+        let name = gpx.metadata.and_then(|m| m.name).unwrap_or_else(|| {
+            Path::new(file_path)
                 .file_stem()
                 .and_then(|s| s.to_str())
                 .unwrap_or("Unknown Track")
                 .to_string()
         });
-        track_data.loaded = true;
 
-        info!("Loaded GPX track with {} points", track_data.points.len());
+        info!("Parsed GPX track with {} points", points.len());
+        Ok((points, origin, name))
     } else {
-        warn!("No track points found in GPX file");
+        // Return an error if no points were found
+        Err(anyhow::anyhow!("No track points found in GPX file"))
     }
-
-    Ok(())
 }
 
 // System to visualize loaded GPX tracks

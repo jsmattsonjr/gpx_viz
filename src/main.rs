@@ -96,9 +96,17 @@ fn handle_load_gpx(
     query: Query<(Entity, &LoadGpx)>,
 ) {
     for (entity, load_gpx) in query.iter() {
-        if let Err(e) = load_gpx_file(commands.reborrow(), track_data.as_mut(), load_gpx.0.clone())
-        {
-            error!("Failed to load GPX file: {}", e);
+        match geo::gpx::parse_gpx_file(&load_gpx.0) {
+            Ok((points, origin, name)) => {
+                track_data.points = points;
+                track_data.origin = origin;
+                track_data.name = name;
+                track_data.loaded = true;
+                info!("Loaded GPX track with {} points", track_data.points.len());
+            }
+            Err(e) => {
+                error!("Failed to load GPX file: {}", e);
+            }
         }
 
         // Remove the component after processing
