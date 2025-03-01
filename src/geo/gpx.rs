@@ -79,6 +79,7 @@ pub fn parse_gpx_file(file_path: &str) -> anyhow::Result<(Vec<GeoPoint>, GeoPoin
 }
 
 // System to visualize loaded GPX tracks
+// System to visualize loaded GPX tracks
 pub fn visualize_loaded_gpx(
     mut commands: Commands,
     track_data: Res<GpxTrackData>,
@@ -96,13 +97,14 @@ pub fn visualize_loaded_gpx(
 
         // Create a small sphere for each point
         commands.spawn(PbrBundle {
-            mesh: meshes.add(Mesh::from(shape::UVSphere {
+            mesh: Mesh3d(meshes.add(Mesh::from(shape::UVSphere {
                 radius: TRACK_RADIUS_METERS,
                 sectors: 8,
                 stacks: 8,
-            })),
-            material: materials
-                .add(Color::srgb(TRACK_COLOR[0], TRACK_COLOR[1], TRACK_COLOR[2]).into()),
+            }))),
+            material: MeshMaterial3d(
+                materials.add(Color::srgb(TRACK_COLOR[0], TRACK_COLOR[1], TRACK_COLOR[2]).into()),
+            ),
             transform: Transform::from_translation(position),
             ..default()
         });

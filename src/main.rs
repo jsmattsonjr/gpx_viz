@@ -59,8 +59,8 @@ fn setup(
     let grid_divisions = 100; // 10m divisions
 
     commands.spawn(PbrBundle {
-        mesh: meshes.add(shape::Plane::from_size(grid_size).into()),
-        material: materials.add(Color::srgb(0.3, 0.3, 0.3).into()),
+        mesh: Mesh3d(meshes.add(shape::Plane::from_size(grid_size).into())),
+        material: MeshMaterial3d(materials.add(Color::srgb(0.3, 0.3, 0.3).into())),
         transform: Transform::from_xyz(0.0, 0.0, 0.0),
         ..default()
     });
@@ -71,16 +71,16 @@ fn setup(
 
         // X-axis line
         commands.spawn(PbrBundle {
-            mesh: meshes.add(shape::Box::new(grid_size, 0.1, 0.1).into()),
-            material: materials.add(Color::srgb(0.5, 0.5, 0.5).into()),
+            mesh: Mesh3d(meshes.add(shape::Box::new(grid_size, 0.1, 0.1).into())),
+            material: MeshMaterial3d(materials.add(Color::srgb(0.5, 0.5, 0.5).into())),
             transform: Transform::from_xyz(0.0, 0.1, position),
             ..default()
         });
 
         // Z-axis line
         commands.spawn(PbrBundle {
-            mesh: meshes.add(shape::Box::new(0.1, 0.1, grid_size).into()),
-            material: materials.add(Color::srgb(0.5, 0.5, 0.5).into()),
+            mesh: Mesh3d(meshes.add(shape::Box::new(0.1, 0.1, grid_size).into())),
+            material: MeshMaterial3d(materials.add(Color::srgb(0.5, 0.5, 0.5).into())),
             transform: Transform::from_xyz(position, 0.1, 0.0),
             ..default()
         });
