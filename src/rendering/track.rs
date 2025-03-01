@@ -1,6 +1,7 @@
 use crate::config::TRACK_RADIUS_METERS;
 use crate::geo::coordinates::GeoPoint;
 use bevy::prelude::*;
+use bevy::render::mesh::shape;
 
 // This will be expanded in later milestones to create cylindrical track segments
 // For now, we'll just create placeholder functions

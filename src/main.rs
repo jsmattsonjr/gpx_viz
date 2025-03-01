@@ -1,4 +1,5 @@
 use bevy::prelude::*;
+use bevy::render::mesh::shape;
 use bevy_panorbit_camera::{PanOrbitCamera, PanOrbitCameraPlugin};
 use geo::gpx::{load_gpx_file, LoadGpx};
 

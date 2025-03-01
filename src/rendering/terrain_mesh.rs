@@ -1,5 +1,6 @@
 use crate::geo::terrain::TerrainBounds;
 use bevy::prelude::*;
+use bevy::render::mesh::shape;
 
 // This is a placeholder for future implementation
 // Will be expanded in later milestones

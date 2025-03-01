@@ -1,4 +1,5 @@
 use bevy::prelude::*;
+use bevy::render::mesh::shape;
 use gpx::{read, Gpx};
 use std::fs::File;
 use std::io::BufReader;
