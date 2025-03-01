@@ -21,7 +21,8 @@ impl GeoPoint {
 
     // Convert to Bevy Vec3 relative to a reference point (origin)
     pub fn to_bevy_position(&self, reference: Option<&GeoPoint>) -> Vec3 {
-        let ref_point = reference.unwrap_or(&GeoPoint::new(0.0, 0.0, 0.0));
+        let default_ref_point = GeoPoint::new(0.0, 0.0, 0.0);
+        let ref_point = reference.unwrap_or(&default_ref_point);
 
         // Convert to local ENU (East-North-Up) coordinates using GDAL
         let (east, north, up) = Self::wgs84_to_enu(
