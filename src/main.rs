@@ -1,9 +1,13 @@
+mod camera;
+
 use bevy::prelude::*;
+use camera::{OrbitCamera, OrbitCameraPlugin};
 
 fn main() {
     App::new()
         .insert_resource(ClearColor(Color::srgb(0.1, 0.1, 0.1))) // Dark background
         .add_plugins(DefaultPlugins)
+        .add_plugins(OrbitCameraPlugin)
         .add_systems(Startup, setup)
         .run();
 }
@@ -56,9 +60,17 @@ fn setup(
         brightness: 0.5, // Brighter ambient for outdoor setting
     });
 
-    // Add a camera looking at the sphere
-    commands.spawn(Camera3dBundle {
-        transform: Transform::from_xyz(0.0, 2.0, 5.0).looking_at(Vec3::ZERO, Vec3::Y), // Look at origin, with up direction
-        ..default()
-    });
+    // Add a camera looking at the sphere with orbit controls
+    commands.spawn((
+        Camera3dBundle {
+            transform: Transform::from_xyz(0.0, 2.0, 5.0).looking_at(Vec3::ZERO, Vec3::Y), // Look at origin, with up direction
+            ..default()
+        },
+        OrbitCamera {
+            focus: Vec3::ZERO,
+            radius: 5.0,
+            sensitivity: 0.01,
+            zoom_sensitivity: 0.25,
+        },
+    ));
 }
