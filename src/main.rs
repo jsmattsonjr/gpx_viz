@@ -17,22 +17,43 @@ fn setup(
     commands.spawn(PbrBundle {
         mesh: meshes.add(Sphere { radius: 1.0 }), // Unit radius sphere
         material: materials.add(StandardMaterial {
-            base_color: Color::srgb(1.0, 0.0, 0.0), // Red color
+            base_color: Color::srgb(0.95, 0.04, 0.04), // More saturated true red
+            perceptual_roughness: 0.5,                 // Slightly higher roughness
+            metallic: 0.0,                             // Non-metallic
+            reflectance: 0.2, // Lower reflectance for more color saturation
             ..default()
         }),
         transform: Transform::from_xyz(0.0, 0.0, 0.0), // At origin
         ..default()
     });
 
-    // Add a light so we can see the sphere
-    commands.spawn(PointLightBundle {
-        point_light: PointLight {
-            intensity: 1500.0,
+    // Simulate outdoor sunlight with a bright directional light
+    commands.spawn(DirectionalLightBundle {
+        directional_light: DirectionalLight {
+            illuminance: 50000.0, // Bright sunlight
             shadows_enabled: true,
             ..default()
         },
-        transform: Transform::from_xyz(4.0, 8.0, 4.0),
+        transform: Transform::from_xyz(0.0, 10.0, 10.0).looking_at(Vec3::ZERO, Vec3::Y), // Sun coming from above
         ..default()
+    });
+
+    // Add a softer fill light to simulate sky light
+    commands.spawn(DirectionalLightBundle {
+        directional_light: DirectionalLight {
+            illuminance: 10000.0,
+            shadows_enabled: false,
+            color: Color::srgb(0.8, 0.8, 1.0), // Slightly blue for sky
+            ..default()
+        },
+        transform: Transform::from_xyz(-5.0, 3.0, 0.0).looking_at(Vec3::ZERO, Vec3::Y),
+        ..default()
+    });
+
+    // Ambient light for outdoors
+    commands.insert_resource(AmbientLight {
+        color: Color::WHITE,
+        brightness: 0.5, // Brighter ambient for outdoor setting
     });
 
     // Add a camera looking at the sphere
