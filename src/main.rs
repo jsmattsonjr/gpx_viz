@@ -1,36 +1,21 @@
 mod camera;
+mod track;
 
 use bevy::prelude::*;
 use camera::{OrbitCamera, OrbitCameraPlugin};
+use track::TrackPlugin;
 
 fn main() {
     App::new()
         .insert_resource(ClearColor(Color::srgb(0.1, 0.1, 0.1))) // Dark background
         .add_plugins(DefaultPlugins)
         .add_plugins(OrbitCameraPlugin)
+        .add_plugins(TrackPlugin)
         .add_systems(Startup, setup)
         .run();
 }
 
-fn setup(
-    mut commands: Commands,
-    mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<StandardMaterial>>,
-) {
-    // Create a red sphere at the origin
-    commands.spawn(PbrBundle {
-        mesh: meshes.add(Sphere { radius: 1.0 }), // Unit radius sphere
-        material: materials.add(StandardMaterial {
-            base_color: Color::srgb(0.95, 0.04, 0.04), // More saturated true red
-            perceptual_roughness: 0.5,                 // Slightly higher roughness
-            metallic: 0.0,                             // Non-metallic
-            reflectance: 0.2, // Lower reflectance for more color saturation
-            ..default()
-        }),
-        transform: Transform::from_xyz(0.0, 0.0, 0.0), // At origin
-        ..default()
-    });
-
+fn setup(mut commands: Commands) {
     // Simulate outdoor sunlight with a bright directional light
     commands.spawn(DirectionalLightBundle {
         directional_light: DirectionalLight {

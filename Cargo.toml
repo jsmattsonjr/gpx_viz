@@ -5,3 +5,5 @@ edition = "2024"
 
 [dependencies]
 bevy = "0.14"
+gdal = { version = "0.17", features = ["bindgen"] }
+gpx = "0.10"
